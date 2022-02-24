@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   loading: boolean;
-  constructor( private fb: FormBuilder) {
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  constructor( private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.loading = false;
     this.form = this.fb.group({
       user: ['', Validators.required],
@@ -21,11 +24,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   // tslint:disable-next-line:type
-  sendForm() {
+  sendForm(): void {
     const user = this.form.value.user.toLocaleLowerCase();
     const password = this.form.value.password.toLocaleLowerCase();
-    if (user === 'juan' && password === 'qwerty'){
+    const type = this.form.value.type;
+    if (user === 'juan' && password === 'qwerty' && type === 'astronaut'){
       this.loading = true;
+    } else {
+      this.error();
+      this.form.reset();
     }
+  }
+  error(): void {
+   this.snackBar.open('El usuario o contraseña incorrecta', 'ok', {
+     duration: 5000,
+     horizontalPosition: this.horizontalPosition,
+     verticalPosition: this.verticalPosition
+   });
   }
 }
