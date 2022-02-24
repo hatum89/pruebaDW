@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
   loading: boolean;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  constructor( private fb: FormBuilder, private snackBar: MatSnackBar) {
+  constructor( private fb: FormBuilder,
+               private snackBar: MatSnackBar,
+               private router: Router) {
     this.loading = false;
     this.form = this.fb.group({
       user: ['', Validators.required],
@@ -30,6 +33,10 @@ export class LoginComponent implements OnInit {
     const type = this.form.value.type;
     if (user === 'juan' && password === 'qwerty' && type === 'astronaut'){
       this.loading = true;
+      setTimeout(() => {
+        this.router.navigateByUrl('/admin')
+          .then();
+      }, 2000);
     } else {
       this.error();
       this.form.reset();
