@@ -13,6 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {HttpClientModule} from '@angular/common/http';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -32,6 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatListModule,
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -46,6 +48,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatListModule
   ]
 })
 export class SharedModule { }

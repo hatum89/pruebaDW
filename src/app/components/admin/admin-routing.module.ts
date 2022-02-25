@@ -9,7 +9,8 @@ const routes: Routes = [
   children: [
     {path: 'astronaut', component: AstronautsComponent},
     {path: 'passenger', component: PassengersComponent},
-  ]},
+  ]
+  },
 ];
 
 @NgModule({

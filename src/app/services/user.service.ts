@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private  http: HttpClient) { }
   // tslint:disable-next-line:typedef
-  getUsers() {
+  getUsers(){
     return this.http.get('assets/user.json');
   }
   getCurrentUser(): string {

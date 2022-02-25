@@ -1,1 +1,9 @@
-<p>astronauts works!</p>
+<mat-selection-list #userD [multiple]="false">
+  <mat-list-option *ngFor="let user of usersData" [value]="user.name">
+   Astronauta:  {{user.name}}
+  </mat-list-option>
+</mat-selection-list>
+
+<p>
+  Option selected: {{userD.selectedOptions.selected[0]?.value}}
+</p>
