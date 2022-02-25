@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       localStorage.setItem('type', this.form.value.userType);
       setTimeout(() => {
-        this.router.navigateByUrl('/admin')
+        this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
           .then();
         return;
       }, 2000);
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       localStorage.setItem('type', this.form.value.userType);
       setTimeout(() => {
-        this.router.navigateByUrl('/admin')
+        this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
           .then();
         return;
       }, 2000);
