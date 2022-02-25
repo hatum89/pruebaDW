@@ -1,0 +1,52 @@
+{
+  "usersData": [
+    {
+      "id": 1,
+      "name": "juan",
+      "userType": "astronaut",
+      "password": "qwerty"
+    },
+    {
+      "id": 2,
+      "name": "juan",
+      "userType": "passenger",
+      "password": "qwerty"
+    },
+    {
+      "id": 3,
+      "name": "gabriel",
+      "userType": "astronaut",
+      "password": "qwerty"
+    },
+    {
+      "id": 4,
+      "name": "gabriel",
+      "userType": "passenger",
+      "password": "qwerty"
+    },
+    {
+      "id": 5,
+      "name": "diana",
+      "userType": "astronaut",
+      "password": "qwerty"
+    },
+    {
+      "id": 6,
+      "name": "diana",
+      "userType": "passenger",
+      "password": "qwerty"
+    },
+    {
+      "id": 7,
+      "name": "tato",
+      "userType": "astronaut",
+      "password": "qwerty"
+    },
+    {
+      "id": 8,
+      "name": "tato",
+      "userType": "passenger",
+      "password": "qwerty"
+    }
+  ]
+}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import {UserInterface} from '../../../interfaces/user-interface';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +13,13 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   loading: boolean;
+  user: UserInterface[];
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor( private fb: FormBuilder,
                private snackBar: MatSnackBar,
-               private router: Router) {
+               private router: Router,
+               private userService: UserService) {
     this.loading = false;
     this.form = this.fb.group({
       user: ['', Validators.required],
@@ -25,6 +29,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.getUsers()
+      .subscribe((user: UserInterface[]) => {
+       this.user = user;
+       console.log(this.user);
+    });
+
   }
   // tslint:disable-next-line:type
   sendForm(): void {

@@ -1,8 +1,6 @@
-export interface PassengerInterface {
-  id: number;
-  userType: string;
-  name: string;
-  password: string;
+import {UserInterface} from './user-interface';
+
+export interface PassengerInterface extends UserInterface {
   ship?: string[];
   location: string;
   arrive: string;

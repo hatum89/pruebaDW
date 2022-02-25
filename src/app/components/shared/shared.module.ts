@@ -10,6 +10,9 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {HttpClientModule} from '@angular/common/http';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -26,7 +29,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatOptionModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule,
+    MatDialogModule,
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -37,7 +42,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatOptionModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MatSlideToggleModule,
+    MatDialogModule,
   ]
 })
 export class SharedModule { }

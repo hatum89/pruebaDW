@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AstronautInterface} from '../../../../interfaces/astronaut-interface';
 import {PassengerInterface} from '../../../../interfaces/passenger-interface';
 import {Router} from '@angular/router';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +13,12 @@ export class NavbarComponent implements OnInit {
   astronaut: AstronautInterface;
   passenger: PassengerInterface;
   infoType: string;
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
-    const type = localStorage.getItem('type');
+    const type = this.userService.getCurrentUser();
     this.infoType = (type === 'astronaut') ? 'Astronauta' : 'Pasajero';
   }
 
