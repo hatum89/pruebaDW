@@ -1,2 +1,9 @@
+<div class="flex-toggle">
+  <mat-slide-toggle (change)="changeTheme()" [(ngModel)]="darkMode">
+  </mat-slide-toggle>
+  <mat-icon *ngIf="showIconMode">dark_mode</mat-icon>
+  <mat-icon *ngIf="!showIconMode">brightness_low</mat-icon>
+</div>
+
 <router-outlet></router-outlet>
-<mat-slide-toggle (click)="changeTheme()">Slide me!</mat-slide-toggle>
+
