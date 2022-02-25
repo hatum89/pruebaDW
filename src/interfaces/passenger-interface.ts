@@ -7,5 +7,5 @@ export interface PassengerInterface {
   location: string;
   arrive: string;
   goOut: string;
-  passengerNumber: number;
+  passengersNumber: number;
 }

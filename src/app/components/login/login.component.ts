@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     this.form = this.fb.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
-      type: ['', Validators.required],
+      userType: ['', Validators.required],
     });
   }
 
@@ -30,14 +30,26 @@ export class LoginComponent implements OnInit {
   sendForm(): void {
     const user = this.form.value.user.toLocaleLowerCase();
     const password = this.form.value.password.toLocaleLowerCase();
-    const type = this.form.value.type;
+    const type = this.form.value.userType;
     if (user === 'juan' && password === 'qwerty' && type === 'astronaut'){
       this.loading = true;
+      localStorage.setItem('type', this.form.value.userType);
       setTimeout(() => {
         this.router.navigateByUrl('/admin')
           .then();
+        return;
       }, 2000);
-    } else {
+    }
+    else if (user === 'juan' && password === 'qwerty' && type === 'passenger'){
+      this.loading = true;
+      localStorage.setItem('type', this.form.value.userType);
+      setTimeout(() => {
+        this.router.navigateByUrl('/admin')
+          .then();
+        return;
+      }, 2000);
+    }
+    else {
       this.error();
       this.form.reset();
     }
