@@ -61,6 +61,10 @@ export class LoginComponent implements OnInit {
               }
             }, 2000);
           }
+          else {
+            this.error();
+            this.form.reset();
+          }
         }
       });
   }

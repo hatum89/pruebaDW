@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import {UserInterface} from '../../interfaces/user-interface';
-import {isObservable} from 'rxjs/internal-compatibility';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +14,13 @@ export class UserService {
   }
   getCurrentUser(): string {
    return  localStorage.getItem('type');
+  }
+  // tslint:disable-next-line:typedef
+  getToken() {
+    if (localStorage.getItem('token') !== null) {
+     return localStorage.getItem('token');
+    } else {
+      return '';
+    }
   }
 }
