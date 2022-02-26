@@ -29,43 +29,40 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUsers()
-      .subscribe((user: UserInterface[]) => {
-       this.user = user;
-       console.log(this.user);
-    });
-
   }
   // tslint:disable-next-line:type
   sendForm(): void {
-    const user = this.form.value.user.toLocaleLowerCase();
-    const password = this.form.value.password.toLocaleLowerCase();
-    const type = this.form.value.userType;
-    const token = 1;
-    if (user === 'juan' && password === 'qwerty' && type === 'astronaut'){
-      this.loading = true;
-      localStorage.setItem('type', this.form.value.userType);
-      localStorage.setItem('token', (token).toString());
-      setTimeout(() => {
-        this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
-          .then();
-        return;
-      }, 2000);
-    }
-    else if (user === 'juan' && password === 'qwerty' && type === 'passenger'){
-      this.loading = true;
-      localStorage.setItem('type', this.form.value.userType);
-      localStorage.setItem('token', (token).toString());
-      setTimeout(() => {
-        this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
-          .then();
-        return;
-      }, 2000);
-    }
-    else {
-      this.error();
-      this.form.reset();
-    }
+    this.userService.getUsers()
+      .subscribe((userDataInfo: any) => {
+        this.user = userDataInfo.usersData;
+        const user = this.form.value.user.toLocaleLowerCase();
+        const password = this.form.value.password.toLocaleLowerCase();
+        const type = this.form.value.userType;
+        const userFilter = this.user.filter((userFilterData) => {
+          return  userFilterData.name === user && userFilterData.userType === type;
+        });
+        if (!userFilter.length) {
+          this.error();
+          this.form.reset();
+        }
+        else {
+          const token = userFilter[0].token;
+          if (user === userFilter[0].name && password === userFilter[0].password && type === userFilter[0].userType){
+            this.loading = true;
+            localStorage.setItem('type', this.form.value.userType);
+            localStorage.setItem('token', (token).toString());
+            setTimeout(() => {
+              if (userFilter[0].userType === 'astronaut'){
+                this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
+                  .then();
+              } else {
+                this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
+                  .then();
+              }
+            }, 2000);
+          }
+        }
+      });
   }
   error(): void {
    this.snackBar.open('El usuario o contraseña incorrecta', 'ok', {
