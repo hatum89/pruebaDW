@@ -41,9 +41,11 @@ export class LoginComponent implements OnInit {
     const user = this.form.value.user.toLocaleLowerCase();
     const password = this.form.value.password.toLocaleLowerCase();
     const type = this.form.value.userType;
+    const token = 1;
     if (user === 'juan' && password === 'qwerty' && type === 'astronaut'){
       this.loading = true;
       localStorage.setItem('type', this.form.value.userType);
+      localStorage.setItem('token', (token).toString());
       setTimeout(() => {
         this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
           .then();
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
     else if (user === 'juan' && password === 'qwerty' && type === 'passenger'){
       this.loading = true;
       localStorage.setItem('type', this.form.value.userType);
+      localStorage.setItem('token', (token).toString());
       setTimeout(() => {
         this.router.navigateByUrl(`/admin/${this.form.value.userType}`)
           .then();

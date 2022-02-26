@@ -3,4 +3,5 @@ export interface UserInterface {
   userType: string;
   name: string;
   password: string;
+  token: string;
 }

@@ -4,49 +4,57 @@
       "id": 1,
       "name": "juan",
       "userType": "astronaut",
-      "password": "qwerty"
+      "password": "qwerty",
+      "token": 1
     },
     {
       "id": 2,
       "name": "juan",
       "userType": "passenger",
-      "password": "qwerty"
+      "password": "qwerty",
+      "token": 2
     },
     {
       "id": 3,
       "name": "gabriel",
       "userType": "astronaut",
-      "password": "qwerty"
+      "password": "qwerty",
+      "token": 3
     },
     {
       "id": 4,
       "name": "gabriel",
       "userType": "passenger",
-      "password": "qwerty"
+      "password": "qwerty",
+      "token": 4
     },
     {
       "id": 5,
       "name": "diana",
       "userType": "astronaut",
-      "password": "qwerty"
+      "password": "qwerty",
+      "token": 5
     },
     {
       "id": 6,
       "name": "diana",
       "userType": "passenger",
-      "password": "qwerty"
+      "password": "qwerty",
+      "toke": 6
     },
     {
       "id": 7,
       "name": "tato",
       "userType": "astronaut",
-      "password": "qwerty"
+      "password": "qwerty",
+      "token": 7
     },
     {
       "id": 8,
       "name": "tato",
       "userType": "passenger",
-      "password": "qwerty"
+      "password": "qwerty",
+      "token": 8
     }
   ]
 }
