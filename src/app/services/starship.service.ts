@@ -9,6 +9,7 @@ export class StarshipService {
 
   constructor( private http: HttpClient) { }
 
+  // tslint:disable-next-line:typedef
   getStarship(): Observable<any>{
     return this.http.get('assets/starship.json');
   }

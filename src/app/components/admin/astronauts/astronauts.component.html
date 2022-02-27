@@ -1,13 +1,25 @@
 
 <mat-selection-list [multiple]="false">
   <mat-label class="title">Lista Astronautas:</mat-label>
+  <mat-form-field class="mat-form" appearance="fill">
+    <mat-label>Buscar:</mat-label>
+    <input matInput [(ngModel)]="userSearch" placeholder="Ingrese nombre de usuario">
+  </mat-form-field>
+  <button style="margin-left: 6px" mat-button mat-raised-button color="accent"
+          (click)="searchMethod(userSearch)">Buscar</button>
   <mat-list-option *ngFor="let user of usersData" [value]="user.name">
-    <button mat-button (click)="itemMethod(user)">{{user.name}}</button>
+    <button mat-button (click)="itemMethod(user)">{{user.name | uppercase}}</button>
   </mat-list-option>
 </mat-selection-list>
 <mat-selection-list [multiple]="false">
   <mat-label class="title">Lista de Naves</mat-label>
+  <mat-form-field style="display: flex; flex-direction: column;" appearance="fill">
+    <mat-label>Buscar:</mat-label>
+    <input matInput [(ngModel)]="shipSearch" placeholder="Ingrese nombre de usuario">
+  </mat-form-field>
+  <button style="margin-left: 6px" mat-button mat-raised-button color="accent"
+          (click)="searchMethodShip(shipSearch)">Buscar</button>
   <mat-list-option *ngFor="let ship of ships" [value]="ship">
-    <button mat-button>{{ship}}</button>
+    <button mat-button>{{ship.name | uppercase}}</button>
   </mat-list-option>
 </mat-selection-list>

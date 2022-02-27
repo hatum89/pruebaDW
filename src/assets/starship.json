@@ -1,3 +1,20 @@
 {
-  "starship" : ["Apolo 11", "Cosmos", "Estrella de la muerte", "Vandred"]
+  "starship" : [
+    {
+      "id": 1,
+      "name": "Apolo 11"
+    },
+    {
+      "id": 2,
+      "name": "Cosmos"
+    },
+    {
+      "id": 3,
+      "name": "Estrella de la muerte"
+    },
+    {
+      "id": 4,
+      "name": "Vandred"
+    }
+  ]
 }
