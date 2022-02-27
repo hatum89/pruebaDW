@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ModalInfoComponent} from '../../modal-info/modal-info.component';
 import {MatDialog} from '@angular/material/dialog';
 import {ShipsInterface} from '../../../../interfaces/ships-interface';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-astronauts',
   templateUrl: './astronauts.component.html',
@@ -98,7 +98,9 @@ export class AstronautsComponent implements OnInit {
     this.shipsCopy.push(ship);
     localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
   }
-
+  editShip(i){
+   console.log(i);
+  }
   deletedShip(i: number) {
     Swal.fire({
       title: '¿Desea eliminar una nave?',

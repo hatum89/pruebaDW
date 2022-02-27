@@ -5,26 +5,34 @@
 <app-alerts *ngIf="showMessageAstronaut" [message]="message"></app-alerts>
 <button style="margin-left: 6px" mat-button mat-raised-button color="accent"
         (click)="searchMethod(userSearch)">Buscar</button>
-<mat-selection-list [multiple]="false">
+<mat-selection-list class="list" [multiple]="false">
   <mat-label class="title">Lista Astronautas:</mat-label>
-  <mat-list-option *ngFor="let user of usersData" [value]="user.name">
+  <mat-list-option *ngFor="let user of usersData">
     <button mat-button (click)="itemMethod(user)">{{user.name | uppercase}}</button>
   </mat-list-option>
 </mat-selection-list>
 <mat-form-field class="mat-form" appearance="fill">
   <mat-label>Buscar:</mat-label>
-  <input matInput [(ngModel)]="shipSearch" placeholder="Ingrese nombre de usuario">
+  <input matInput [(ngModel)]="shipSearch" placeholder="Ingrese nombre de la nave">
 </mat-form-field>
 <app-alerts *ngIf="showMessageShip" [message]="message"></app-alerts>
 <button style="margin-left: 6px" mat-button mat-raised-button color="accent"
         (click)="searchMethodShip(shipSearch)">Buscar</button>
 <button style="margin-left: 6px" mat-button mat-raised-button color="accent"
         (click)="createMethodShip(shipSearch)">Crear</button>
-<mat-selection-list [multiple]="false">
+<mat-selection-list class="list" [multiple]="false">
   <mat-label class="title">Lista de Naves</mat-label>
-  <mat-list-option *ngFor="let ship of ships, let i = index" [value]="ship">
-    <button mat-button (click)="deletedShip(i)">{{ship.name | uppercase}}</button>
-  </mat-list-option>
+    <mat-list style="display: flex" *ngFor="let ship of ships, let i = index">
+     <mat-list-item>
+       {{ship.name | uppercase}}
+       <button (click)="editShip(i)" mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+         <mat-icon>edit</mat-icon>
+       </button>
+       <button (click)="deletedShip(i)" mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+         <mat-icon>delete</mat-icon>
+       </button>
+     </mat-list-item>
+    </mat-list>
 </mat-selection-list>
 
 
