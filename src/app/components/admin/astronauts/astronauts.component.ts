@@ -3,6 +3,7 @@ import {UserService} from '../../../services/user.service';
 import {UserInterface} from '../../../../interfaces/user-interface';
 import {StarshipService} from '../../../services/starship.service';
 import {AstronautInterface} from '../../../../interfaces/astronaut-interface';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-astronauts',
@@ -12,6 +13,8 @@ import {AstronautInterface} from '../../../../interfaces/astronaut-interface';
 export class AstronautsComponent implements OnInit {
   usersData: UserInterface[];
   ships: any;
+  dataSource: MatTableDataSource<any>;
+  displayedColumns: string[] = ['user', 'email', 'name', 'secondName', 'available', 'Actions'];
   constructor( private userService: UserService,
                private starShipService: StarshipService) {
   }
@@ -29,4 +32,8 @@ export class AstronautsComponent implements OnInit {
       });
   }
 
+  // tslint:disable-next-line:typedef
+  itemMethod(user: UserInterface) {
+    console.log(user);
+  }
 }

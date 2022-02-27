@@ -40,8 +40,11 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   color: whitesmoke;
 }
 
-html, body { height: 100%; overflow-y: hidden; }
-body { margin: 0; font-family: Roboto, "Helvetica Ne", sans-serif; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Ne", sans-serif;
+}
 .example-spacer {
   flex: 1 1 auto;
 }

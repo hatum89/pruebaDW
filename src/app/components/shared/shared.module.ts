@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -34,6 +35,7 @@ import {MatListModule} from '@angular/material/list';
     MatSlideToggleModule,
     MatDialogModule,
     MatListModule,
+    MatCardModule,
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -48,7 +50,8 @@ import {MatListModule} from '@angular/material/list';
     HttpClientModule,
     MatSlideToggleModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }

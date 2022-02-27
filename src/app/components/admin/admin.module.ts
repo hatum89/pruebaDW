@@ -7,14 +7,16 @@ import { AstronautsComponent } from './astronauts/astronauts.component';
 import { PassengersComponent } from './passengers/passengers.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
   declarations: [AstronautsComponent, PassengersComponent, NavbarComponent, AdminComponent],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        SharedModule,
+        MatTableModule
+    ]
 })
 export class AdminModule { }
