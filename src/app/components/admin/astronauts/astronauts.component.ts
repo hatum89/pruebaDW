@@ -22,10 +22,13 @@ export class AstronautsComponent implements OnInit {
   shipSearch: string;
   usersDataCopy: AstronautInterface[];
   shipsCopy: any;
+  message: string;
+  show: boolean;
   constructor( private userService: UserService,
                private starShipService: StarshipService,
                private activatedRoute: ActivatedRoute,
                private matDialog: MatDialog) {
+    this.show = false;
   }
 
   ngOnInit(): void {
@@ -52,6 +55,7 @@ export class AstronautsComponent implements OnInit {
     console.log(this.usersData);
   }
   // tslint:disable-next-line:typedef
+
   itemMethod(user: UserInterface) {
     console.log(user);
     const dialogRef = this.matDialog.open(ModalInfoComponent, {
@@ -59,6 +63,12 @@ export class AstronautsComponent implements OnInit {
     });
   }
   searchMethodShip(shipSearch: string) {
-    this.ships = this.shipsCopy.filter(shipData => shipData.name === shipSearch);
+    if (shipSearch) {
+      this.show = true;
+      this.message = 'El campo de busqueda esta vacío';
+    }
+    if (this.shipsCopy.filter(shipData => shipData.name === shipSearch)){
+      this.ships = this.shipsCopy.filter(shipData => shipData.name === shipSearch);
+    }
   }
 }

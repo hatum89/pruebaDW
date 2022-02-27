@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
   // tslint:disable-next-line:type
   sendForm(): void {
+    console.log(this.form.value);
     this.userService.getUsers()
       .subscribe((userDataInfo: any) => {
         this.user = userDataInfo.usersData;

@@ -2,19 +2,19 @@
   "starship" : [
     {
       "id": 1,
-      "name": "Apolo 11"
+      "name": "apolo 11"
     },
     {
       "id": 2,
-      "name": "Cosmos"
+      "name": "cosmos"
     },
     {
       "id": 3,
-      "name": "Estrella de la muerte"
+      "name": "estrella de la muerte"
     },
     {
       "id": 4,
-      "name": "Vandred"
+      "name": "vandred"
     }
   ]
 }

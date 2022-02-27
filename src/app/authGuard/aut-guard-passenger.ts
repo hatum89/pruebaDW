@@ -12,7 +12,7 @@ export class AutGuardPassenger implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     localStorage.getItem('type');
-    if (localStorage.getItem('type') === 'passenger' && localStorage.getItem('token')) {
+    if (localStorage.getItem('type') === 'pasajero' && localStorage.getItem('token')) {
       return true;
     } else {
       this.router.navigateByUrl('/login')

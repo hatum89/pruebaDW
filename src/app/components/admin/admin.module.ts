@@ -9,10 +9,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin.component';
 import {MatTableModule} from '@angular/material/table';
 import {FormsModule} from '@angular/forms';
+import { AlertsComponent } from './alerts/alerts.component';
 
 
 @NgModule({
-  declarations: [AstronautsComponent, PassengersComponent, NavbarComponent, AdminComponent],
+  declarations: [AstronautsComponent, PassengersComponent, NavbarComponent, AdminComponent, AlertsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -9,8 +9,8 @@ import {AutGuardPassenger} from '../../authGuard/aut-guard-passenger';
 const routes: Routes = [
   {path: '', component: AdminComponent,
   children: [
-    {path: 'astronaut/:id', component: AstronautsComponent, canActivate: [ AuthGuardAstronaut ]},
-    {path: 'passenger/:id', component: PassengersComponent, canActivate: [AutGuardPassenger]},
+    {path: 'astronauta/:id', component: AstronautsComponent, canActivate: [ AuthGuardAstronaut ]},
+    {path: 'pasajero/:id', component: PassengersComponent, canActivate: [AutGuardPassenger]},
   ]
   },
 ];

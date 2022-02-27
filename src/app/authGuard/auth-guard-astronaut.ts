@@ -12,7 +12,7 @@ export class AuthGuardAstronaut implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     localStorage.getItem('type');
-    if (localStorage.getItem('type') === 'astronaut' && localStorage.getItem('token')) {
+    if (localStorage.getItem('type') === 'astronauta' && localStorage.getItem('token')) {
       return true;
     } else {
       this.router.navigateByUrl('/login')
