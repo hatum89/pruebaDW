@@ -25,6 +25,7 @@ export class AstronautsComponent implements OnInit {
   message: string;
   showMessageShip: boolean;
   showMessageAstronaut: boolean;
+  showButtonSearch: boolean;
 
   constructor(private userService: UserService,
               private starShipService: StarshipService,
@@ -32,6 +33,7 @@ export class AstronautsComponent implements OnInit {
               private matDialog: MatDialog) {
     this.showMessageShip = false;
     this.showMessageAstronaut = false;
+    this.showButtonSearch = true;
   }
 
   ngOnInit(): void {
@@ -44,12 +46,7 @@ export class AstronautsComponent implements OnInit {
         this.currentUser = users.usersData.filter(data => data.id == this.id);
         this.userService.setCurrentUser = this.currentUser[0].name;
       });
-    this.starShipService.getStarship()
-      .subscribe((ships: any) => {
-        this.ships = ships.starship;
-        this.shipsCopy = ships.starship;
-        console.log(this.shipsCopy);
-      });
+    this.loadMethodShip();
   }
 
   // tslint:disable-next-line:typedef
@@ -64,8 +61,9 @@ export class AstronautsComponent implements OnInit {
       this.message = 'La nave no existe por favor vuelva a buscar, verifique los espacios';
     }
     if (userSearch !== undefined) {
-      this.showMessageAstronaut = true;
+      this.showMessageAstronaut = false;
       this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearch);
+      this.showButtonSearch = false;
     }
   }
 
@@ -84,11 +82,13 @@ export class AstronautsComponent implements OnInit {
       return;
     }
     if ((this.shipsCopy.filter(shipData => shipData.name === shipSearch)).length === 0) {
+      this.showMessageShip = true;
       this.message = 'La nave no existe por favor vuelva a buscar';
     }
     if (shipSearch !== undefined) {
-      this.showMessageShip = true;
-      this.ships = this.shipsCopy.filter(shipData => shipData.name === shipSearch);
+      this.showButtonSearch = false;
+      this.showMessageShip = false;
+      this.shipsCopy = this.shipsCopy.filter(shipData => shipData.name === shipSearch);
     }
   }
 
@@ -98,8 +98,17 @@ export class AstronautsComponent implements OnInit {
     this.shipsCopy.push(ship);
     localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
   }
-  editShip(i){
-   console.log(i);
+  editShip(shipSearch , i){
+    if (shipSearch === undefined){
+      this.showMessageShip = true;
+      this.message = 'El campo de edición esta vacío';
+      return;
+    }
+    const startShipUpadate = this.shipsCopy.map(shipCopy => shipCopy.id === i ?
+      {...shipCopy, name: shipSearch} : shipCopy) ;
+    this.shipsCopy = startShipUpadate;
+    localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
+    console.log(startShipUpadate);
   }
   deletedShip(i: number) {
     Swal.fire({
@@ -114,5 +123,16 @@ export class AstronautsComponent implements OnInit {
       } else if (result.isDenied) {
       }
     });
+  }
+
+  loadMethodShip() {
+    this.showButtonSearch = true;
+    this.starShipService.getStarship()
+      .subscribe((ships: any) => {
+        this.ships = ships.starship;
+        this.shipsCopy = ships.starship;
+        localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
+        console.log(this.shipsCopy);
+      });
   }
 }

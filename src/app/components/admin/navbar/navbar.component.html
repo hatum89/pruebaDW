@@ -4,7 +4,7 @@
   <!--con un pipe cambiar el mensaje-->
   <span class="example-spacer"></span>
   <span class="example-spacer"></span>
-  <span style="font-size: 16px">Usuario: {{userService.setCurrentUser}}</span>
+  <span style="font-size: 16px">Usuario: {{userService.setCurrentUser | uppercase}}</span>
   <button (click)="logout()" mat-icon-button class="example-icon favorite-icon" aria-label="Logout">
     <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon>
   </button>
