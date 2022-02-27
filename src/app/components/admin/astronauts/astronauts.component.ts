@@ -46,20 +46,21 @@ export class AstronautsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   searchMethod(userSearch: string) {
-
-    if (userSearch === undefined) {
+     const userSearchD = userSearch.toLowerCase();
+     if (userSearch === undefined) {
       this.showMessageAstronaut = true;
       this.message = 'El campo de busqueda esta vacío';
       return;
     }
-    if ((this.usersDataCopy.filter(userData => userData.name === userSearch)).length === 0) {
+    if ((this.usersDataCopy.filter(user => user.name === userSearchD).length) === 0){
       this.showMessageAstronaut = true;
-      this.message = 'La el piloto no existe por favor vuelva a buscar, verifique los espacios';
+      this.message = 'El nombre del piloto no existe, por favor verifique los espacios';
+      return;
     }
-    if (userSearch !== undefined) {
+     if (userSearchD !== undefined) {
       this.showMessageAstronaut = false;
       this.showButtonSearchUser = false;
-      this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearch);
+      this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearchD);
 
     }
   }
@@ -74,19 +75,21 @@ export class AstronautsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   searchMethodShip(shipSearch: string) {
+    const shipSearchD = shipSearch.toLowerCase();
     if (shipSearch === undefined) {
       this.showMessageShip = true;
       this.message = 'El campo de busqueda esta vacío';
       return;
     }
-    if ((this.shipsCopy.filter(shipData => shipData.name === shipSearch)).length === 0) {
+    if ((this.shipsCopy.filter(ships => ships.name === shipSearchD).length) === 0){
       this.showMessageShip = true;
-      this.message = 'La nave no existe por favor vuelva a buscar';
+      this.message = 'El nombre de la nave no existe, por favor verifique los espacios';
+      return;
     }
-    if (shipSearch !== undefined) {
+    if (shipSearchD !== undefined) {
       this.showButtonSearch = false;
       this.showMessageShip = false;
-      this.shipsCopy = this.shipsCopy.filter(shipData => shipData.name === shipSearch);
+      this.shipsCopy = this.shipsCopy.filter(shipData => shipData.name === shipSearchD);
     }
   }
 
@@ -128,6 +131,7 @@ export class AstronautsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   loadMethodShip() {
+    this.shipSearch = '';
     this.showButtonSearch = true;
     this.starShipService.getStarship()
       .subscribe((ships: any) => {
@@ -140,6 +144,7 @@ export class AstronautsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   loadMethodAstronaut() {
+    this.userSearch = '';
     this.userService.getUsers()
       .subscribe((users: any) => {
         this.usersDataCopy = users.usersData;
