@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     const type = localStorage.getItem('type');
-    this.infoType = (type === 'astronaut') ? 'Astronauta' : 'Pasajero';
+    this.infoType = (type === 'astronauta') ? 'Astronauta' : 'Pasajero';
   }
 
 

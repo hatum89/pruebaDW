@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ModalInfoComponent} from '../../modal-info/modal-info.component';
 import {MatDialog} from '@angular/material/dialog';
 import {ShipsInterface} from '../../../../interfaces/ships-interface';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-astronauts',
   templateUrl: './astronauts.component.html',
@@ -25,10 +25,11 @@ export class AstronautsComponent implements OnInit {
   message: string;
   showMessageShip: boolean;
   showMessageAstronaut: boolean;
-  constructor( private userService: UserService,
-               private starShipService: StarshipService,
-               private activatedRoute: ActivatedRoute,
-               private matDialog: MatDialog) {
+
+  constructor(private userService: UserService,
+              private starShipService: StarshipService,
+              private activatedRoute: ActivatedRoute,
+              private matDialog: MatDialog) {
     this.showMessageShip = false;
     this.showMessageAstronaut = false;
   }
@@ -60,13 +61,14 @@ export class AstronautsComponent implements OnInit {
       return;
     }
     if ((this.usersDataCopy.filter(userData => userData.name === userSearch)).length === 0) {
-      this.message = 'La nave no existe por favor vuelva a buscar';
+      this.message = 'La nave no existe por favor vuelva a buscar, verifique los espacios';
     }
     if (userSearch !== undefined) {
       this.showMessageAstronaut = true;
       this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearch);
     }
   }
+
   // tslint:disable-next-line:typedef
   itemMethod(user: UserInterface) {
     console.log(user);
@@ -74,6 +76,7 @@ export class AstronautsComponent implements OnInit {
       data: user
     });
   }
+
   searchMethodShip(shipSearch: string) {
     if (shipSearch === undefined) {
       this.showMessageShip = true;
@@ -87,5 +90,27 @@ export class AstronautsComponent implements OnInit {
       this.showMessageShip = true;
       this.ships = this.shipsCopy.filter(shipData => shipData.name === shipSearch);
     }
+  }
+
+  createMethodShip(shipSearch) {
+    const nextId = this.shipsCopy.length + 1;
+    const ship: ShipsInterface = {id: nextId, name: shipSearch};
+    this.shipsCopy.push(ship);
+    localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
+  }
+
+  deletedShip(i: number) {
+    Swal.fire({
+      title: '¿Desea eliminar una nave?',
+      showDenyButton: true,
+      confirmButtonText: 'Aceptar',
+      denyButtonText: `Salir`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.shipsCopy.splice(i, 1);
+        localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
+      } else if (result.isDenied) {
+      }
+    });
   }
 }

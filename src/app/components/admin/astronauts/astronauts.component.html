@@ -18,10 +18,12 @@
 <app-alerts *ngIf="showMessageShip" [message]="message"></app-alerts>
 <button style="margin-left: 6px" mat-button mat-raised-button color="accent"
         (click)="searchMethodShip(shipSearch)">Buscar</button>
+<button style="margin-left: 6px" mat-button mat-raised-button color="accent"
+        (click)="createMethodShip(shipSearch)">Crear</button>
 <mat-selection-list [multiple]="false">
   <mat-label class="title">Lista de Naves</mat-label>
-  <mat-list-option *ngFor="let ship of ships" [value]="ship">
-    <button mat-button>{{ship.name | uppercase}}</button>
+  <mat-list-option *ngFor="let ship of ships, let i = index" [value]="ship">
+    <button mat-button (click)="deletedShip(i)">{{ship.name | uppercase}}</button>
   </mat-list-option>
 </mat-selection-list>
 
