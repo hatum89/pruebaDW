@@ -23,12 +23,14 @@ export class AstronautsComponent implements OnInit {
   usersDataCopy: AstronautInterface[];
   shipsCopy: any;
   message: string;
-  show: boolean;
+  showMessageShip: boolean;
+  showMessageAstronaut: boolean;
   constructor( private userService: UserService,
                private starShipService: StarshipService,
                private activatedRoute: ActivatedRoute,
                private matDialog: MatDialog) {
-    this.show = false;
+    this.showMessageShip = false;
+    this.showMessageAstronaut = false;
   }
 
   ngOnInit(): void {
@@ -51,11 +53,21 @@ export class AstronautsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   searchMethod(userSearch: string) {
-    this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearch);
-    console.log(this.usersData);
+
+    if (userSearch === undefined) {
+      this.showMessageAstronaut = true;
+      this.message = 'El campo de busqueda esta vacío';
+      return;
+    }
+    if ((this.usersDataCopy.filter(userData => userData.name === userSearch)).length === 0) {
+      this.message = 'La nave no existe por favor vuelva a buscar';
+    }
+    if (userSearch !== undefined) {
+      this.showMessageAstronaut = true;
+      this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearch);
+    }
   }
   // tslint:disable-next-line:typedef
-
   itemMethod(user: UserInterface) {
     console.log(user);
     const dialogRef = this.matDialog.open(ModalInfoComponent, {
@@ -63,11 +75,16 @@ export class AstronautsComponent implements OnInit {
     });
   }
   searchMethodShip(shipSearch: string) {
-    if (shipSearch) {
-      this.show = true;
+    if (shipSearch === undefined) {
+      this.showMessageShip = true;
       this.message = 'El campo de busqueda esta vacío';
+      return;
     }
-    if (this.shipsCopy.filter(shipData => shipData.name === shipSearch)){
+    if ((this.shipsCopy.filter(shipData => shipData.name === shipSearch)).length === 0) {
+      this.message = 'La nave no existe por favor vuelva a buscar';
+    }
+    if (shipSearch !== undefined) {
+      this.showMessageShip = true;
       this.ships = this.shipsCopy.filter(shipData => shipData.name === shipSearch);
     }
   }
