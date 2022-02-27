@@ -2,12 +2,15 @@
   <mat-label>Buscar:</mat-label>
   <input matInput [(ngModel)]="userSearch" placeholder="Ingrese nombre de usuario">
 </mat-form-field>
-<!--<app-alerts  [message]="message"></app-alerts>-->
-<app-alerts *ngIf="showMessageAstronaut" [message]="message"></app-alerts>
 <button style="margin-left: 6px" mat-button mat-raised-button color="accent"
-        (click)="searchMethod(userSearch)">Buscar</button>
+        (click)="loadMethodAstronaut()">Recargar
+</button>
+<app-alerts *ngIf="showMessageAstronaut" [message]="message"></app-alerts>
+<button *ngIf="showButtonSearchUser" style="margin-left: 6px" mat-button mat-raised-button color="accent"
+        (click)="searchMethod(userSearch)">Buscar
+</button>
 <mat-selection-list class="list" [multiple]="false">
-  <mat-label class="title">Lista Astronautas:</mat-label>
+  <mat-label class="title">Lista de Astronautas:</mat-label>
   <mat-list-option *ngFor="let user of usersData">
     <button mat-button (click)="itemMethod(user)">{{user.name | uppercase}}</button>
   </mat-list-option>
@@ -20,11 +23,12 @@
 <button *ngIf="showButtonSearch" style="margin-left: 6px" mat-button mat-raised-button color="accent"
         (click)="searchMethodShip(shipSearch)">Buscar
 </button>
-<button style="margin-left: 6px" mat-button mat-raised-button color="accent"
+<button *ngIf="showButtonSearch"  style="margin-left: 6px" mat-button mat-raised-button color="accent"
         (click)="createMethodShip(shipSearch)">Crear
 </button>
-<button style="margin-left: 6px" mat-button mat-raised-button color="accent"
-        (click)="loadMethodShip()">Recargar</button>
+<button  style="margin-left: 6px" mat-button mat-raised-button color="accent"
+        (click)="loadMethodShip()">Recargar
+</button>
 <mat-selection-list class="list" [multiple]="false">
   <mat-label class="title">Lista de Naves</mat-label>
   <mat-list style="display: flex" *ngFor="let ship of shipsCopy, let i = index">

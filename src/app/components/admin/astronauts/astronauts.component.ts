@@ -26,6 +26,7 @@ export class AstronautsComponent implements OnInit {
   showMessageShip: boolean;
   showMessageAstronaut: boolean;
   showButtonSearch: boolean;
+  showButtonSearchUser: boolean;
 
   constructor(private userService: UserService,
               private starShipService: StarshipService,
@@ -34,18 +35,12 @@ export class AstronautsComponent implements OnInit {
     this.showMessageShip = false;
     this.showMessageAstronaut = false;
     this.showButtonSearch = true;
+    this.showButtonSearchUser = true;
   }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userService.getUsers()
-      .subscribe((users: any) => {
-        this.usersDataCopy = users.usersData;
-        this.usersData = users.usersData.filter(userData => userData.userType === 'astronauta' && userData.id != this.id);
-        // tslint:disable-next-line:triple-equals
-        this.currentUser = users.usersData.filter(data => data.id == this.id);
-        this.userService.setCurrentUser = this.currentUser[0].name;
-      });
+    this.loadMethodAstronaut();
     this.loadMethodShip();
   }
 
@@ -58,12 +53,14 @@ export class AstronautsComponent implements OnInit {
       return;
     }
     if ((this.usersDataCopy.filter(userData => userData.name === userSearch)).length === 0) {
-      this.message = 'La nave no existe por favor vuelva a buscar, verifique los espacios';
+      this.showMessageAstronaut = true;
+      this.message = 'La el piloto no existe por favor vuelva a buscar, verifique los espacios';
     }
     if (userSearch !== undefined) {
       this.showMessageAstronaut = false;
+      this.showButtonSearchUser = false;
       this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearch);
-      this.showButtonSearch = false;
+
     }
   }
 
@@ -75,6 +72,7 @@ export class AstronautsComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:typedef
   searchMethodShip(shipSearch: string) {
     if (shipSearch === undefined) {
       this.showMessageShip = true;
@@ -92,12 +90,14 @@ export class AstronautsComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line:typedef
   createMethodShip(shipSearch) {
     const nextId = this.shipsCopy.length + 1;
     const ship: ShipsInterface = {id: nextId, name: shipSearch};
     this.shipsCopy.push(ship);
     localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
   }
+  // tslint:disable-next-line:typedef
   editShip(shipSearch , i){
     if (shipSearch === undefined){
       this.showMessageShip = true;
@@ -110,6 +110,7 @@ export class AstronautsComponent implements OnInit {
     localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
     console.log(startShipUpadate);
   }
+  // tslint:disable-next-line:typedef
   deletedShip(i: number) {
     Swal.fire({
       title: '¿Desea eliminar una nave?',
@@ -125,6 +126,7 @@ export class AstronautsComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:typedef
   loadMethodShip() {
     this.showButtonSearch = true;
     this.starShipService.getStarship()
@@ -133,6 +135,18 @@ export class AstronautsComponent implements OnInit {
         this.shipsCopy = ships.starship;
         localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
         console.log(this.shipsCopy);
+      });
+  }
+
+  // tslint:disable-next-line:typedef
+  loadMethodAstronaut() {
+    this.userService.getUsers()
+      .subscribe((users: any) => {
+        this.usersDataCopy = users.usersData;
+        this.usersData = users.usersData.filter(userData => userData.userType === 'astronauta' && userData.id != this.id);
+        // tslint:disable-next-line:triple-equals
+        this.currentUser = users.usersData.filter(data => data.id == this.id);
+        this.userService.setCurrentUser = this.currentUser[0].name;
       });
   }
 }
