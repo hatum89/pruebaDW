@@ -11,12 +11,11 @@ import {UserService} from '../services/user.service';
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
-
-  constructor( private userService: UserService) {}
+  constructor( private userService: UserService) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.userService.getToken();
-
+    const token = this.userService.getToken('auth-token');
     const headers = new HttpHeaders({
         'token-user': token
       });

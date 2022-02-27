@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   user: UserInterface[];
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+  private usersData: any;
   constructor( private fb: FormBuilder,
                private snackBar: MatSnackBar,
                private router: Router,

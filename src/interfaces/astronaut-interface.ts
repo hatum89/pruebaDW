@@ -4,4 +4,5 @@ export interface AstronautInterface extends UserInterface {
   astronaut?: string[];
   ship?: string[];
   passenger?: string[];
+  rol?: string;
 }

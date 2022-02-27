@@ -1,9 +1,18 @@
 <mat-selection-list #userD [multiple]="false">
   <mat-list-option *ngFor="let user of usersData" [value]="user.name">
-   Astronauta:  {{user.name}}
+    Lista Astronautas:  {{user.name}}
+  </mat-list-option>
+</mat-selection-list>
+<mat-selection-list #userF [multiple]="false">
+  <mat-list-option *ngFor="let ship of ships" [value]="ship">
+    Lista de Naves:  {{ship}}
   </mat-list-option>
 </mat-selection-list>
 
+
 <p>
   Option selected: {{userD.selectedOptions.selected[0]?.value}}
+</p>
+<p>
+  Option selected: {{userF.selectedOptions.selected[0]?.value}}
 </p>

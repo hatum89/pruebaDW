@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -7,7 +8,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UserService {
 
-  constructor(private  http: HttpClient) { }
+  constructor(private  http: HttpClient) {
+  }
   // tslint:disable-next-line:typedef
   getUsers(){
     return this.http.get('assets/user.json');
@@ -16,7 +18,7 @@ export class UserService {
    return  localStorage.getItem('type');
   }
   // tslint:disable-next-line:typedef
-  getToken() {
+  getToken(token) {
     if (localStorage.getItem('token') !== null) {
      return localStorage.getItem('token');
     } else {
