@@ -3,59 +3,59 @@
     {
       "id": 1,
       "name": "juan",
-      "userType": "astronaut",
+      "userType": "astronauta",
       "password": "qwerty",
       "token": "asddas222asasf45",
-      "rol": "captain"
+      "rol": "capitan"
     },
     {
       "id": 2,
       "name": "alex",
-      "userType": "passenger",
+      "userType": "pasajero",
       "password": "qwerty",
       "token": "asddas222asasf45"
     },
     {
       "id": 3,
       "name": "gabriel",
-      "userType": "astronaut",
+      "userType": "astronauta",
       "password": "qwerty",
       "token": "asddas222asasf45",
-      "rol": "captain"
+      "rol": "capitan"
     },
     {
       "id": 4,
       "name": "maria",
-      "userType": "passenger",
+      "userType": "pasajero",
       "password": "qwerty",
       "token": "asddas222asasf45"
     },
     {
       "id": 5,
       "name": "diana",
-      "userType": "astronaut",
+      "userType": "astronauta",
       "password": "qwerty",
       "token": "asddas222asasf45",
-      "rol": "pilot"
+      "rol": "piloto"
     },
     {
       "id": 6,
       "name": "ana",
-      "userType": "passenger",
+      "userType": "pasajero",
       "password": "qwerty",
       "toke": "asddas222asasf45"
     },
     {
       "id": 7,
       "name": "tato",
-      "userType": "astronaut",
+      "userType": "astronauta",
       "password": "qwerty",
-      "rol": "pilot"
+      "rol": "piloto"
     },
     {
       "id": 8,
       "name": "alejandro",
-      "userType": "passenger",
+      "userType": "pasajero",
       "password": "qwerty",
       "token": "asddas222asasf45"
     }

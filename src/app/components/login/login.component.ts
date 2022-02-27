@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('type', this.form.value.userType);
             localStorage.setItem('token', (token).toString());
             setTimeout(() => {
-              if (userFilter[0].userType === 'astronaut'){
+              if (userFilter[0].userType === 'astronauta'){
                 this.router.navigateByUrl(`/admin/${this.form.value.userType}/${userFilter[0].id}`)
                   .then();
               } else {

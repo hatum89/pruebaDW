@@ -1,0 +1,20 @@
+<mat-card class="card-content">
+  <div class="field">
+    <mat-form-field appearance="standard">
+      <mat-label>Usuario</mat-label>
+      <input matInput  [value]="data.name" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Rol</mat-label>
+      <input matInput  [value]="data.rol" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Profesión</mat-label>
+      <input matInput  [value]="data.userType" readonly>
+    </mat-form-field>
+  </div>
+  <div class="button-modal">
+    <button (click)="closeDialog()" mat-raised-button color="primary">Cerrar</button>
+  </div>
+</mat-card>
+

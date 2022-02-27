@@ -9,6 +9,7 @@ import {SharedModule} from './components/shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {InterceptorService} from './interceptor/interceptor.service';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
 
 
 
@@ -16,7 +17,8 @@ import {InterceptorService} from './interceptor/interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ModalInfoComponent
   ],
   imports: [
     BrowserModule,
