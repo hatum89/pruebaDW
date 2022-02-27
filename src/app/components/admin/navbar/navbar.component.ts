@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AstronautInterface} from '../../../../interfaces/astronaut-interface';
 import {PassengerInterface} from '../../../../interfaces/passenger-interface';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../../services/user.service';
 
 @Component({
@@ -13,12 +13,14 @@ export class NavbarComponent implements OnInit {
   astronaut: AstronautInterface;
   passenger: PassengerInterface;
   infoType: string;
+  id: string;
+  currentUser: AstronautInterface;
   constructor(private router: Router,
-              private userService: UserService) {
+              public userService: UserService) {
   }
 
   ngOnInit(): void {
-    const type = this.userService.getCurrentUser();
+    const type = localStorage.getItem('type');
     this.infoType = (type === 'astronaut') ? 'Astronauta' : 'Pasajero';
   }
 

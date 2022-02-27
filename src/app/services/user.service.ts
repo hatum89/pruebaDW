@@ -7,15 +7,12 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
+  setCurrentUser = 'sin user';
   constructor(private  http: HttpClient) {
   }
   // tslint:disable-next-line:typedef
   getUsers(){
     return this.http.get('assets/user.json');
-  }
-  getCurrentUser(): string {
-   return  localStorage.getItem('type');
   }
   // tslint:disable-next-line:typedef
   getToken(token) {

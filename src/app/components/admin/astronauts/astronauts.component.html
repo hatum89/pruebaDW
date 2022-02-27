@@ -1,11 +1,12 @@
-<mat-label class="title">Lista Astronautas:</mat-label>
+
 <mat-selection-list [multiple]="false">
+  <mat-label class="title">Lista Astronautas:</mat-label>
   <mat-list-option *ngFor="let user of usersData" [value]="user.name">
     <button mat-button (click)="itemMethod(user)">{{user.name}}</button>
   </mat-list-option>
 </mat-selection-list>
-<mat-label class="title">Lista de Naves</mat-label>
 <mat-selection-list [multiple]="false">
+  <mat-label class="title">Lista de Naves</mat-label>
   <mat-list-option *ngFor="let ship of ships" [value]="ship">
     <button mat-button>{{ship}}</button>
   </mat-list-option>

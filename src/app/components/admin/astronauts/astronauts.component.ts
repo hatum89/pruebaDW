@@ -3,7 +3,7 @@ import {UserService} from '../../../services/user.service';
 import {UserInterface} from '../../../../interfaces/user-interface';
 import {StarshipService} from '../../../services/starship.service';
 import {AstronautInterface} from '../../../../interfaces/astronaut-interface';
-import {MatTableDataSource} from '@angular/material/table';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-astronauts',
@@ -11,19 +11,23 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./astronauts.component.scss']
 })
 export class AstronautsComponent implements OnInit {
-  usersData: UserInterface[];
+  usersData: AstronautInterface[];
   ships: any;
-  dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['user', 'email', 'name', 'secondName', 'available', 'Actions'];
+  id: string;
+  currentUser: AstronautInterface[];
   constructor( private userService: UserService,
-               private starShipService: StarshipService) {
+               private starShipService: StarshipService,
+               private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.userService.getUsers()
       .subscribe((users: any) => {
         this.usersData = users.usersData.filter(data => data.userType === 'astronaut');
-        console.log(this.usersData);
+        // tslint:disable-next-line:triple-equals
+        this.currentUser = users.usersData.filter(data => data.id == this.id);
+        this.userService.setCurrentUser = this.currentUser[0].name;
       });
     this.starShipService.getStarship()
       .subscribe((ships: any) => {
