@@ -15,6 +15,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -36,6 +37,7 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     MatListModule,
     MatCardModule,
+    MatGridListModule,
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -51,7 +53,8 @@ import {MatCardModule} from '@angular/material/card';
     MatSlideToggleModule,
     MatDialogModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
   ]
 })
 export class SharedModule { }
