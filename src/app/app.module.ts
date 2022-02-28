@@ -13,7 +13,6 @@ import { ModalInfoComponent } from './components/modal-info/modal-info.component
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
