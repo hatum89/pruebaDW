@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {AstronautInterface} from '../../../interfaces/astronaut-interface';
+import {AstronautInterface} from '../../interfaces/astronaut-interface';
 
 @Component({
   selector: 'app-modal-info',

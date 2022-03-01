@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AstronautInterface} from '../../../../interfaces/astronaut-interface';
-import {PassengerInterface} from '../../../../interfaces/passenger-interface';
+import {AstronautInterface} from '../../../interfaces/astronaut-interface';
+import {PassengerInterface} from '../../../interfaces/passenger-interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../../services/user.service';
 

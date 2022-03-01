@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {PassengerInterface} from '../../../../interfaces/passenger-interface';
+import {PassengerInterface} from '../../../interfaces/passenger-interface';
 import {UserService} from '../../../services/user.service';
 import {StarshipService} from '../../../services/starship.service';
 import {ActivatedRoute} from '@angular/router';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
-import {UserInterface} from '../../../interfaces/user-interface';
+import {UserInterface} from '../../interfaces/user-interface';
 import {UserService} from '../../services/user.service';
 
 @Component({
