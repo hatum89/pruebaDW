@@ -39,11 +39,24 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   background-color: #333;
   color: whitesmoke;
 }
-
-body {
+html {
+  overflow-x: hidden;
+  @media screen and(min-width: 768px) {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Ne", sans-serif;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
 }
 .example-spacer {
   flex: 1 1 auto;

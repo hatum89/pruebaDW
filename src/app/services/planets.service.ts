@@ -5,10 +5,10 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CountriesService {
+export class PlanetsService {
 
   constructor(private http: HttpClient) { }
-  getCountries(): Observable<any>{
-    return this.http.get('assets/data-country.json');
+  getPlanet(): Observable<any>{
+    return this.http.get('assets/data-planet.json');
   }
 }

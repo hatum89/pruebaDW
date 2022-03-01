@@ -6,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-import {MatOptionModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -16,7 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -38,6 +38,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatListModule,
     MatCardModule,
     MatGridListModule,
+    MatDatepickerModule
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -54,7 +55,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatDialogModule,
     MatListModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class SharedModule { }

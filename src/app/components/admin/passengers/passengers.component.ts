@@ -1,27 +1,28 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {PassengerInterface} from '../../../interfaces/passenger-interface';
 import {UserService} from '../../../services/user.service';
 import {StarshipService} from '../../../services/starship.service';
 import {ActivatedRoute} from '@angular/router';
-import {CountriesService} from '../../../services/countries.service';
+import {PlanetsService} from '../../../services/planets.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-passengers',
   templateUrl: './passengers.component.html',
   styleUrls: ['./passengers.component.scss']
 })
-export class PassengersComponent implements OnInit, AfterViewInit {
+export class PassengersComponent implements OnInit{
+  form: FormGroup;
   usersData: PassengerInterface;
   idP: string;
   currentUser: PassengerInterface;
-  listCountry: any;
-  @ViewChild('background') background: ElementRef;
+  listPlanet: any;
 
   constructor(private userService: UserService,
               private starShipService: StarshipService,
               private activatedRoute: ActivatedRoute,
-              private countriesService: CountriesService,
-              private render2: Renderer2) {
+              private countriesService: PlanetsService,
+              private fb: FormBuilder) {
     this.idP = this.activatedRoute.snapshot.paramMap.get('id');
     this.userService.getUsers()
       .subscribe((users: any) => {
@@ -30,25 +31,25 @@ export class PassengersComponent implements OnInit, AfterViewInit {
         this.currentUser = users.usersData.filter(data => data.id == this.idP);
         this.userService.setCurrentUser = this.currentUser[0].name;
       });
-    this.countriesService.getCountries()
-      .subscribe((contries: any) => {
-        this.listCountry = contries.country;
+    this.countriesService.getPlanet()
+      .subscribe((planet: any) => {
+        this.listPlanet = planet.planet;
       });
-  }
 
-  ngAfterViewInit(): void {
-       this.change();
-    }
+    this.form = this.fb.group({
+         location: ['',Validators.required],
+         wayOut: ['',Validators.required],
+         arrival: ['',Validators.required],
+         person: ['',Validators.compose([
+           Validators.required,
+           Validators.pattern("[0-9]{1,5}")
+         ])]
+     });
+  }
   ngOnInit(): void {
   }
   // tslint:disable-next-line:typedef
-  change() {
-    if (document.body.classList.contains('dark-mode')){
-      const background = this.background.nativeElement;
-      this.render2.setStyle(background, 'color', '#000000');
-    } else {
-      const background = this.background.nativeElement;
-      this.render2.setStyle(background, 'color', '#000000');
-    }
+  sendForm() {
+    console.log(this.form.value);
   }
 }

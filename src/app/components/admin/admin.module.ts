@@ -8,8 +8,9 @@ import { PassengersComponent } from './passengers/passengers.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin.component';
 import {MatTableModule} from '@angular/material/table';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertsComponent } from './alerts/alerts.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { AlertsComponent } from './alerts/alerts.component';
     AdminRoutingModule,
     SharedModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule
   ]
 })
 export class AdminModule { }
