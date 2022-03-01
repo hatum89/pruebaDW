@@ -13,11 +13,12 @@ import { ModalInfoComponent } from './components/modal-info/modal-info.component
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ModalInfoComponent
+    ModalInfoComponent,
   ],
   imports: [
     BrowserModule,

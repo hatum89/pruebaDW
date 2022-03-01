@@ -9,8 +9,9 @@
     <p>Gracias por volar con nosotros!!!</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button href="www.google.com" target_blanck>COMPARTIR</button>
+    <button mat-button (click)= link()>LIKE</button>
+    <button mat-button (click)= link() >COMPARTIR</button>
   </mat-card-actions>
   <button (click)="closed()" mat-stroked-button color="primary">Cerrar</button>
+  <img mat-card-image [src]="image | noImage">
 </mat-card>

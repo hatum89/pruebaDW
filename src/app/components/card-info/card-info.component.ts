@@ -12,12 +12,17 @@ export class CardInfoComponent implements OnInit {
   @Input('arrival') arrival:string;
   @Input('person') person:number;
   @Output()close: EventEmitter<boolean> = new EventEmitter();
-
+  image: string;
   constructor() { }
 
   ngOnInit(): void {
+    this.image = 'assets/img/Not-Found';
   }
   closed(){
     this.close.emit(false);
+  }
+
+  link() {
+    window.open('https://www.linkedin.com/in/juan-hatum-varela-b1481b15b/', '_blank');
   }
 }

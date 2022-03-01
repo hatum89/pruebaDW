@@ -4,6 +4,10 @@
   top: -49px;
   left: 20px;
 }
+.mat-card-image {
+  width: calc(100% + -242px);
+  margin: 0 -16px 16px 43px;
+}
 @media only screen and (width: 425px) {
   .example-card {
     max-width: 380px;

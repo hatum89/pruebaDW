@@ -63,6 +63,5 @@ export class PassengersComponent implements OnInit{
       this.person = this.form.value.person;
       this.showCard = true;
     }
-
   }
 }

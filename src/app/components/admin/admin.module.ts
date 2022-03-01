@@ -12,10 +12,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertsComponent } from './alerts/alerts.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {CardInfoComponent} from '../card-info/card-info.component';
+import {NoImagePipe} from '../../pipe/no-image.pipe';
 
 
 @NgModule({
-  declarations: [AstronautsComponent, PassengersComponent, NavbarComponent, AdminComponent, AlertsComponent , CardInfoComponent],
+  declarations: [AstronautsComponent, PassengersComponent, NavbarComponent, AdminComponent, AlertsComponent , CardInfoComponent, NoImagePipe],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -18,9 +18,9 @@
     <mat-datepicker  #picker2></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Pasajeros</mat-label>
-    <input type="number" formControlName="person" matInput>
+    <input type="number" formControlName="person" matInput autocomplete="off">
   </mat-form-field>
   <button [disabled]="form.invalid" mat-fab class="circle" type="submit">
     <mat-icon class="search-icon">search</mat-icon>
