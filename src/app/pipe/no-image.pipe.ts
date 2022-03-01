@@ -5,14 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NoImagePipe implements PipeTransform {
 
-  transform(image:any): string {
-    if(!image){
-      return 'Not-Found';
+  transform(image:string): string {
+    if(!typeof image){
+      return 'assets/img/Not-Found';
     }
-    if(image){
+    if(typeof image){
       return 'assets/img/qr-683354.svg'
     } else {
-     return  '/Not-Found';
+     return  'assets/img/Not-Found';
     }
   }
 }

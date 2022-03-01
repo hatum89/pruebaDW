@@ -8,6 +8,7 @@ import {ModalInfoComponent} from '../../modal-info/modal-info.component';
 import {MatDialog} from '@angular/material/dialog';
 import {ShipsInterface} from '../../../interfaces/ships-interface';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-astronauts',
   templateUrl: './astronauts.component.html',
@@ -27,11 +28,13 @@ export class AstronautsComponent implements OnInit {
   showMessageAstronaut: boolean;
   showButtonSearch: boolean;
   showButtonSearchUser: boolean;
+  showButtonLoadAstronaut: boolean;
 
   constructor(private userService: UserService,
               private starShipService: StarshipService,
               private activatedRoute: ActivatedRoute,
               private matDialog: MatDialog) {
+    this.showButtonLoadAstronaut = false;
     this.showMessageShip = false;
     this.showMessageAstronaut = false;
     this.showButtonSearch = true;
@@ -46,19 +49,21 @@ export class AstronautsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   searchMethod(userSearch: string) {
-     const userSearchD = userSearch.toLowerCase();
-     console.log(userSearch);
-     if (!userSearch) {
+    const userSearchD = userSearch.toLowerCase();
+    console.log(userSearch);
+    if (!userSearch) {
       this.showMessageAstronaut = true;
       this.message = 'El campo de busqueda esta vacío';
       return;
     }
-     if ((this.usersDataCopy.filter(user => user.name === userSearchD).length) === 0){
+    if ((this.usersDataCopy.filter(user => user.name === userSearchD).length) === 0){
+      this.showMessageAstronaut = true;
       this.showMessageAstronaut = true;
       this.message = 'El nombre del piloto no existe, por favor verifique los espacios';
       return;
     }
-     if (userSearchD !== undefined) {
+    if (userSearchD !== undefined) {
+      this.showButtonLoadAstronaut = true;
       this.showMessageAstronaut = false;
       this.showButtonSearchUser = false;
       this.usersData = this.usersDataCopy.filter(userData => userData.name === userSearchD);
@@ -78,6 +83,7 @@ export class AstronautsComponent implements OnInit {
   // tslint:disable-next-line:typedef
   searchMethodShip(shipSearch: string) {
     const shipSearchD = shipSearch.toLowerCase();
+    console.log(shipSearch);
     if (!shipSearch) {
       this.showMessageShip = true;
       this.message = 'El campo de busqueda esta vacío';
@@ -161,6 +167,7 @@ export class AstronautsComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
+
   loadMethodAstronaut() {
     this.userSearch = '';
     this.showButtonSearchUser = true;
@@ -170,6 +177,7 @@ export class AstronautsComponent implements OnInit {
         this.usersData = users.usersData.filter((userData: UserInterface) => userData.userType === 'astronauta' && userData.id !== Number(this.id));
         this.currentUser = users.usersData.filter(data => data.id == this.id);
         this.userService.setCurrentUser = this.currentUser[0].name;
+        this.showButtonLoadAstronaut = false;
       });
   }
 }

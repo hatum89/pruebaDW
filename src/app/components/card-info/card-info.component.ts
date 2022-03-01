@@ -16,7 +16,6 @@ export class CardInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.image = 'assets/img/Not-Found';
   }
   closed(){
     this.close.emit(false);

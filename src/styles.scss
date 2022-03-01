@@ -48,16 +48,22 @@ html {
 }
 html {
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: visible;
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Ne", sans-serif;
 }
 body {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  //overflow-x: hidden;
+  //overflow-y: hidden;
   height: 100vh;
+  @media screen and(min-width: 360px) {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
 }
+
+
 .example-spacer {
   flex: 1 1 auto;
 }
