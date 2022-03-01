@@ -12,7 +12,7 @@ export class CardInfoComponent implements OnInit {
   @Input('arrival') arrival:string;
   @Input('person') person:number;
   @Output()close: EventEmitter<boolean> = new EventEmitter();
-  image: string;
+  image: any;
   constructor() { }
 
   ngOnInit(): void {
