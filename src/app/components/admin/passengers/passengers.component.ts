@@ -17,12 +17,18 @@ export class PassengersComponent implements OnInit{
   idP: string;
   currentUser: PassengerInterface;
   listPlanet: any;
+  location: string;
+  wayOut: string;
+  arrival: string;
+  person: number;
+  showCard: boolean;
 
   constructor(private userService: UserService,
               private starShipService: StarshipService,
               private activatedRoute: ActivatedRoute,
               private countriesService: PlanetsService,
               private fb: FormBuilder) {
+    this.showCard = false;
     this.idP = this.activatedRoute.snapshot.paramMap.get('id');
     this.userService.getUsers()
       .subscribe((users: any) => {
@@ -50,6 +56,13 @@ export class PassengersComponent implements OnInit{
   }
   // tslint:disable-next-line:typedef
   sendForm() {
-    console.log(this.form.value);
+    if(this.form.valid){
+      this.location = this.form.value.location;
+      this.wayOut = this.form.value.wayOut;
+      this.arrival = this.form.value.arrival;
+      this.person = this.form.value.person;
+      this.showCard = true;
+    }
+
   }
 }

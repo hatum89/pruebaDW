@@ -1,32 +1,35 @@
 <form class="flex" [formGroup]="form" (ngSubmit)="sendForm()">
-    <mat-form-field  appearance="fill">
-      <mat-label>Ubicación:</mat-label>
-      <mat-select formControlName="location" class="moreWidth" disableRipple>
-        <mat-option value="astronauta">Astronauta</mat-option>
-        <mat-option value="pasajero">Pasajero</mat-option>
-        <mat-option value="pasajero">Pasajero</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>LLegada</mat-label>
-      <input matInput formControlName="wayOut" [matDatepicker]="picker" readonly>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker  #picker></mat-datepicker>
-<!--      {{form.value.wayOut | date: 'MM/dd/yyyy'}}-->
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Salida</mat-label>
-      <input matInput formControlName="arrival" [matDatepicker]="picker2" readonly>
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker  #picker2></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field  appearance="fill">
-      <mat-label>Pasajeros</mat-label>
-      <input type="number" formControlName="person" matInput>
-    </mat-form-field>
-    <button [disabled]="form.invalid" mat-fab class="circle" type="submit">
+  <mat-form-field  appearance="fill">
+    <mat-label>Ubicación:</mat-label>
+    <mat-select formControlName="location" class="moreWidth" disableRipple>
+      <mat-option [value]="planet.name" *ngFor="let planet of listPlanet" >{{planet.name | uppercase}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>LLegada</mat-label>
+    <input matInput formControlName="wayOut" [matDatepicker]="picker" readonly>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker  #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Salida</mat-label>
+    <input matInput formControlName="arrival" [matDatepicker]="picker2" readonly>
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker  #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Pasajeros</mat-label>
+    <input type="number" formControlName="person" matInput>
+  </mat-form-field>
+  <button [disabled]="form.invalid" mat-fab class="circle" type="submit">
     <mat-icon class="search-icon">search</mat-icon>
-    </button>
-
-  </form>
-
+  </button>
+</form>
+<app-card-info *ngIf="showCard"
+  [location]="location"
+  [wayOut]="wayOut | date: 'MM/dd/yyyy'"
+  [arrival]="arrival | date: 'MM/dd/yyyy'"
+  [person]="person"
+  (close)="showCard = $event"
+></app-card-info>

@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 323px;
+  position: relative;
+  top: -49px;
+  left: 20px;
+}
+@media only screen and (width: 425px) {
+  .example-card {
+    max-width: 380px;
+    position: relative;
+    top: 47px;
+    left: 1px;
+  }
+}
+@media only screen and (width: 360px) {
+  example-card {
+    max-width: 380px;
+    position: relative;
+    top: 47px;
+    left: 1px;
+  }
+}

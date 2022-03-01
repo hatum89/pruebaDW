@@ -11,10 +11,11 @@ import {MatTableModule} from '@angular/material/table';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertsComponent } from './alerts/alerts.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {CardInfoComponent} from '../card-info/card-info.component';
 
 
 @NgModule({
-  declarations: [AstronautsComponent, PassengersComponent, NavbarComponent, AdminComponent, AlertsComponent],
+  declarations: [AstronautsComponent, PassengersComponent, NavbarComponent, AdminComponent, AlertsComponent , CardInfoComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

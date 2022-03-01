@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+  <mat-card-title>Bienvenido a vuelos el mas alla</mat-card-title>
+  <mat-card-subtitle>su tiquet</mat-card-subtitle>
+  <mat-card-content>
+    <p>Ubicación: {{location}}</p>
+    <p>LLegada: {{wayOut}}</p>
+    <p>Salida: {{arrival}}</p>
+    <p>Personas: {{person}}</p>
+    <p>Gracias por volar con nosotros!!!</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button href="www.google.com" target_blanck>COMPARTIR</button>
+  </mat-card-actions>
+  <button (click)="closed()" mat-stroked-button color="primary">Cerrar</button>
+</mat-card>
