@@ -42,24 +42,6 @@
         <mat-icon>delete</mat-icon>
       </button>
     </mat-list-item>
-    <mat-list-item>
-      {{ship.name | uppercase}}
-      <button *ngIf="showButtonSearch" (click)="editShip(shipSearch, i+1)" mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button *ngIf="showButtonSearch"  (click)="deletedShip(i)" mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-list-item>
-    <mat-list-item>
-      {{ship.name | uppercase}}
-      <button *ngIf="showButtonSearch" (click)="editShip(shipSearch, i+1)" mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button *ngIf="showButtonSearch"  (click)="deletedShip(i)" mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-list-item>
   </mat-list>
 </mat-selection-list>
 

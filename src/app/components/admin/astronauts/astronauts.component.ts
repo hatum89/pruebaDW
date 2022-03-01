@@ -104,11 +104,26 @@ export class AstronautsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   createMethodShip(shipSearch) {
-    const nextId = this.shipsCopy.length + 1;
-    const ship: ShipsInterface = {id: nextId, name: shipSearch};
-    this.shipsCopy.push(ship);
-    localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
-    this.shipSearch = '';
+    if (!shipSearch){
+      this.showMessageShip = true;
+      this.message = 'El campo de creacíon esta vacío';
+      return;
+    }
+    Swal.fire({
+      title: `¿Desea crear la nave de nombre ${shipSearch}?`,
+      showDenyButton: true,
+      confirmButtonText: 'Aceptar',
+      denyButtonText: `Salir`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const nextId = this.shipsCopy.length + 1;
+        const ship: ShipsInterface = {id: nextId, name: shipSearch};
+        this.shipsCopy.push(ship);
+        localStorage.setItem('ship', JSON.stringify(this.shipsCopy));
+        this.shipSearch = '';
+      } else if (result.isDenied) {
+      }
+    });
   }
   // tslint:disable-next-line:typedef
   editShip(shipSearch , i){
@@ -119,7 +134,7 @@ export class AstronautsComponent implements OnInit {
       return;
     }
     Swal.fire({
-      title: '¿Desea modificar esta nave?',
+      title: `¿Desea modificar el nombre de la nave por ${shipSearch}?`,
       showDenyButton: true,
       confirmButtonText: 'Aceptar',
       denyButtonText: `Salir`,
@@ -139,7 +154,7 @@ export class AstronautsComponent implements OnInit {
   // tslint:disable-next-line:typedef
   deletedShip(i: number) {
     Swal.fire({
-      title: '¿Desea eliminar una nave?',
+      title: '¿Desea eliminar esta nave?',
       showDenyButton: true,
       confirmButtonText: 'Aceptar',
       denyButtonText: `Salir`,
